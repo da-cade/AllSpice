@@ -8,8 +8,6 @@
           d-flex
           justify-content-around
           align-items-center
-          bg-dark
-          my-5
           rounded
         "
       >
@@ -39,7 +37,7 @@
           "
           @click="filter = 'mine'"
         >
-          <h6>My Recipes</h6>
+          <h6 class="">My Recipes</h6>
         </div>
         <div
           class="
@@ -105,11 +103,12 @@ export default {
 <style lang="scss" scoped>
 .filterbar {
   display: flex;
-  height: 4vh;
+  min-height: 4vh;
+  background-color: darken(#f2fedc, 5%);
 }
 .filter {
   min-width: 33%;
-  height: 4vh;
+  min-height: fit-content;
 }
 h6 {
   margin: 0 !important;

@@ -5,9 +5,15 @@ $success: #00f867;
 $info: #5d0149;
 $warning: #fbcf33;
 $danger: #ea0606;
-$light: #e9ecef;
-$dark: #111927;
+$dark: #484738;
 $grey: #cbcbcb;
+$light: #fffde0;
+$dark-red: #bf1111;
+$orange: #DF9F3D;
+$light-pink: #F4EDE5;
+$peach: #F7906E;
+$accent-cyan: #97E9FF;
+$burlap: #ADAC9A;
 
 $font-sans-serif: Open Sans;
 $font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -22,6 +28,12 @@ $colors: (
   "info": $info,
   "dark": $dark,
   "grey": $grey,
+  "myRed" : $dark-red,
+  "myOrange" : $orange,
+  "myLitePink" : $light-pink,
+  "myPeach" : $peach,
+  "myCyan" : $accent-cyan,
+  "myBurlap" : $burlap
 );
 
 $color-ranges: (

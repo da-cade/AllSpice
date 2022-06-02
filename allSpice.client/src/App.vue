@@ -25,12 +25,13 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
+@import "./assets/scss/_variables.scss";
 .full-page {
-  height: 100vh;
+  min-height: 100vh;
   flex-grow: 1;
 }
 body {
-  background-color: #e9ecef;
+  background-color: $light;
 }
 .w-65 {
   width: 65%;

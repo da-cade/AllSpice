@@ -1,5 +1,8 @@
 <template>
-  <div class="w-100 d-flex justify-content-end sticky-top">
+  <div class="w-100 d-flex justify-content-between bg-light align-items-start">
+    <div>
+      <img class="headline" src="../assets/img/allspice-headline.PNG" alt="" />
+    </div>
     <div class="myNav bg-dark px-3 d-flex align-items-center">
       <router-link :to="{ name: 'Home' }">
         <div class="hoverable me-3">
@@ -42,13 +45,16 @@ export default {
 </script>
 
 <style scoped>
+.headline {
+  height: 10vh;
+}
 .myNav {
-  position: relative;
+  position: fixed;
   width: fit-content;
   height: auto;
   border-radius: 5px;
-  margin-top: 1rem;
-  margin-right: 1rem;
+  right: 0.25rem;
+  top: 0.5rem;
 }
 
 a {

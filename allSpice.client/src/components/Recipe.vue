@@ -3,7 +3,7 @@
     <!-- TODO change router-link to method -->
     <!-- TODO on hover car -->
     <div
-      class="spicebox d-flex flex-column bg-light rounded my-4"
+      class="spicebox d-flex flex-column rounded my-4"
       @click.stop="goToDetails()"
     >
       <img
@@ -32,6 +32,7 @@
               <div v-if="account.id" class="me-2">
                 <i
                   class="mdi mdi-heart selectable"
+                  style="color: rgb(191, 17, 17)"
                   @click.stop="toggleFavorite"
                   v-if="favorited"
                 ></i>
@@ -166,6 +167,7 @@ export default {
 
 
 <style lang="scss" scoped>
+@import "src/assets/scss/_variables.scss";
 .modalFade-enter-active,
 .modalFade-leave-active {
   transition: opacity 0.25s ease;
@@ -183,11 +185,10 @@ export default {
 
   width: 100%;
   height: 60vh;
-  background-color: inherit;
   box-shadow: 0px 0px 0px 0px var(--c);
   transform: translateY(0px);
-  transition: box-shadow 0.1s ease-out;
-  transition: transform 0.1s ease-out;
+  transition: background-color 0.1s ease-out, box-shadow 0.1s ease-out,
+    transform 0.2s ease-out;
   border-color: var(--c);
   border: 0px solid transparent; /* space for the border */
   border-bottom: 4px solid var(--c);
@@ -202,6 +203,10 @@ export default {
   background-size: var(--w) var(--w);
   background-origin: border-box;
   background-repeat: no-repeat;
+  background-color: $light;
+  &:hover {
+    background-color: lighten($light, 10%);
+  }
 }
 .spicebox:hover {
   cursor: pointer;

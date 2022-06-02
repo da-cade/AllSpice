@@ -1,9 +1,9 @@
 <template>
-  <div class="detailsContent rounded">
-    <div
-      class="coverImg rounded-top"
-      :style="{ 'background-image': `url(${recipe.picture})` }"
-    >
+  <div
+    class="detailsContent rounded"
+    :style="{ 'background-image': `url(${recipe.picture})` }"
+  >
+    <div class="coverImg rounded-top">
       <div class="buttonBox d-flex flex-column align-items-center">
         <i
           id="close"
@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <div class="body">
+    <div class="body bg-light">
       <div class="d-flex justify-content-between">
         <div class="w-65 p-4">
           <h1>{{ recipe.title }}</h1>
@@ -44,11 +44,11 @@
         <div class="col-12">
           <div class="whitespacer"></div>
         </div>
-        <div class="col-12">
-          <div class="w-100 d-flex justify-content-end">
+        <div class="col-12 d-flex justify-content-end">
+          <div class="d-flex lighten rounded-circle p-1">
             <i
               v-if="authenticated"
-              class="mdi mdi-pencil selectable"
+              class="mdi mdi-pencil selectable rounded-circle p-1"
               @click.stop="handleEdit"
             ></i>
           </div>
@@ -58,85 +58,89 @@
       <hr />
       <div class="row">
         <div class="col-md-5">
-          <h4>Ingredients</h4>
-          <!-- REVIEW @updateMe="handleEdit(payload)" -->
-          <Ingredient
-            class=""
-            v-for="i in ingredients"
-            :key="i.id"
-            :ingredient="i"
-            :editing="editing"
-          />
-          <i
-            class="mdi mdi-plus bg-danger rounded-circle selectable"
-            v-if="editing"
-            @click.stop="creatingIng = !creatingIng"
-          ></i>
-          <form @submit.prevent="newIngredient()">
-            <div id="newIngredient" class="d-flex">
-              <label for=""></label>
-              <input
-                type="text"
-                v-if="creatingIng && editing"
-                v-model="ingData.name"
-                required
-              />
-              <label for=""></label>
-              <input
-                type="text"
-                style="width: 5vw"
-                v-if="creatingIng && editing"
-                v-model="ingData.quantity"
-                required
-              />
-              <button
-                type="submit"
-                v-if="creatingIng && editing"
-                style="display: none"
-              />
-            </div>
-          </form>
+          <div class="h-100 bg-light rounded p-2">
+            <h4>Ingredients</h4>
+            <!-- REVIEW @updateMe="handleEdit(payload)" -->
+            <Ingredient
+              class=""
+              v-for="i in ingredients"
+              :key="i.id"
+              :ingredient="i"
+              :editing="editing"
+            />
+            <i
+              class="mdi mdi-plus bg-danger rounded-circle selectable"
+              v-if="editing"
+              @click.stop="creatingIng = !creatingIng"
+            ></i>
+            <form @submit.prevent="newIngredient()">
+              <div id="newIngredient" class="d-flex">
+                <label for=""></label>
+                <input
+                  type="text"
+                  v-if="creatingIng && editing"
+                  v-model="ingData.name"
+                  required
+                />
+                <label for=""></label>
+                <input
+                  type="text"
+                  style="width: 5vw"
+                  v-if="creatingIng && editing"
+                  v-model="ingData.quantity"
+                  required
+                />
+                <button
+                  type="submit"
+                  v-if="creatingIng && editing"
+                  style="display: none"
+                />
+              </div>
+            </form>
+          </div>
         </div>
         <div class="col-md-5">
-          <h4>Steps</h4>
-          <Step
-            class=""
-            v-for="s in steps"
-            :key="s.id"
-            :step="s"
-            :editing="editing"
-          />
-          <i
-            class="mdi mdi-plus bg-danger rounded-circle h-25 selectable"
-            v-if="editing"
-            @click.stop="creatingStep = !creatingStep"
-          ></i>
-          <form @submit.prevent="newStep()">
-            <div id="newStep" class="d-flex">
-              <label for=""></label>
-              <input
-                type="number"
-                min="0"
-                style="width: 3vw"
-                v-if="creatingStep && editing"
-                v-model.trim="stepData.position"
-                required
-              />
-              <label for=""></label>
-              <textarea
-                class="w-100"
-                v-if="creatingStep && editing"
-                v-model.trim="stepData.body"
-                required
-              />
-              <button
-                type="submit"
-                v-if="creatingStep && editing"
-                style="display: none"
-              />
-            </div>
-          </form>
-          <!-- TODO we want to use @submit.prevent="newStep" or something on submit to open up another new input -->
+          <div class="h-100 bg-light rounded p-2">
+            <h4>Steps</h4>
+            <Step
+              class=""
+              v-for="s in steps"
+              :key="s.id"
+              :step="s"
+              :editing="editing"
+            />
+            <i
+              class="mdi mdi-plus bg-danger rounded-circle h-25 selectable"
+              v-if="editing"
+              @click.stop="creatingStep = !creatingStep"
+            ></i>
+            <form @submit.prevent="newStep()">
+              <div id="newStep" class="d-flex">
+                <label for=""></label>
+                <input
+                  type="number"
+                  min="0"
+                  style="width: 3vw"
+                  v-if="creatingStep && editing"
+                  v-model.trim="stepData.position"
+                  required
+                />
+                <label for=""></label>
+                <textarea
+                  class="w-100"
+                  v-if="creatingStep && editing"
+                  v-model.trim="stepData.body"
+                  required
+                />
+                <button
+                  type="submit"
+                  v-if="creatingStep && editing"
+                  style="display: none"
+                />
+              </div>
+            </form>
+            <!-- TODO we want to use @submit.prevent="newStep" or something on submit to open up another new input -->
+          </div>
         </div>
       </div>
       <div class="row">
@@ -277,19 +281,30 @@ export default {
 }
 </script>
 
-
 <style lang="scss" scoped>
-// i:not(closeButton) {
-//   font-size: 16pt;
-// }
+@import "src/assets/scss/_variables.scss";
+.lighten {
+  background-color: $light;
+}
+hr {
+  color: $light;
+  height: 2px;
+}
+.body {
+  min-height: 25vh;
+}
 .detailsContent {
   position: relative;
   height: 90vh;
   width: 90vw;
   overflow-y: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
 }
 .coverImg {
-  height: 60vh;
+  height: 65vh;
   width: 100%;
   background-size: cover;
   background-repeat: no-repeat;

@@ -33,17 +33,22 @@ Users can search recipes by category []
 <!--  -->
 My extra stuff NOTE DONT GET HUNG UP ON THIS STUFF 
 <!--  -->
-Router-link/method on category wherever listed []
-*** Modal handleClose() []
-Virtuals on stuff?? Recipes [x], Ingredients[], Steps [], Favorites [] why
-paralax scroll on recipeDetails []
-add more properties to recipes, ingredients []
+Router-link/method on category wherever listed [x]
+*** Modal handleClose() [x]
+Virtuals on stuff?? Recipes [x], Ingredients[], Steps [], Favorites [x] why
+paralax scroll on recipeDetails [x] TODO fix []
+add more properties to recipes, ingredients [x]
 Drag and drop ordering []
 *** edit scrollbar []
-live v-model creating and editing []
-*** animate modal []
+live v-model creating and editing [x]
+*** animate modal [x]
 STYLE heart button []
 to Pascal Case on categories []
-- fav counts []
+-- add new category []
+
+implement josh Loader
+top picture []
+paginate recipes []
+fonts []
 
 
