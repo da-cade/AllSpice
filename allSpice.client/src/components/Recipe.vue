@@ -112,7 +112,7 @@ export default {
     let showModal = ref()
     watchEffect(() => {
       if (route.params.recipeId == props.recipe.id) {
-        showModal.value = route.meta.showModal
+        showModal.value = true
       }
       if (route.name == "Home") {
         showModal.value = false

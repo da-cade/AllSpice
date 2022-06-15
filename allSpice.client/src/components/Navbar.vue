@@ -1,7 +1,7 @@
 <template>
   <div class="w-100 d-flex justify-content-between bg-light align-items-start">
     <div>
-      <img class="headline" src="../assets/img/allspice-headline.PNG" alt="" />
+      <img class="headline" src="https://i.imgur.com/uD2hJ1s.png" alt="" />
     </div>
     <div class="myNav bg-dark px-3 d-flex align-items-center">
       <router-link :to="{ name: 'Home' }">
@@ -15,7 +15,7 @@
         </div>
       </router-link>
       <!-- TODO replace with drawer menu -->
-      <div style="position: relative" class="me-3">
+      <div style="position: relative" class="myDrop me-3">
         <button
           class="fa-solid fa-plus"
           type="button"
@@ -55,6 +55,10 @@ export default {
   border-radius: 5px;
   right: 0.25rem;
   top: 0.5rem;
+}
+
+.dropdown-menu {
+  z-index: 100;
 }
 
 a {

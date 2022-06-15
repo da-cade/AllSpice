@@ -1,7 +1,7 @@
 # Deploy Dotnet to Heroku.
 name: Deploy to heroku.
 
-# Run workflow on every push to master branch
+# Run workflow on every push to deploy branch
 on:
   push:
     branches: [deploy]
@@ -20,6 +20,8 @@ jobs:
         with:
           dotnet-version: 6.0.x
 
+        
+        #dynamically injects env vars into our appsettings.json
       - name: Set Env Vars
         uses: microsoft/variable-substitution@v1
         with:

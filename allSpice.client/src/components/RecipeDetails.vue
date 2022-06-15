@@ -56,9 +56,9 @@
       </div>
 
       <hr />
-      <div class="row">
+      <div class="row h-100 bg-myLitePink rounded">
         <div class="col-md-5">
-          <div class="h-100 bg-light rounded p-2">
+          <div class="bg-light rounded p-2 my-3">
             <h4>Ingredients</h4>
             <!-- REVIEW @updateMe="handleEdit(payload)" -->
             <Ingredient
@@ -100,7 +100,7 @@
           </div>
         </div>
         <div class="col-md-5">
-          <div class="h-100 bg-light rounded p-2">
+          <div class="bg-light rounded p-2 my-3">
             <h4>Steps</h4>
             <Step
               class=""
