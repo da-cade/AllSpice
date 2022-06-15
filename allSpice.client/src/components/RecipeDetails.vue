@@ -183,6 +183,7 @@ export default {
     const favorited = ref(false)
     const stepData = ref({})
     const ingData = ref({})
+    //cdur tosrue
     watchEffect(() => {
       const favorite = AppState.favorites.find(f => (f.accountId == AppState.account.id) && (f.accountId == AppState.account.id))
       if (favorite) {
