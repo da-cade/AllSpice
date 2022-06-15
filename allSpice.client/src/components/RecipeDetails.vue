@@ -57,8 +57,8 @@
 
       <hr />
       <div class="row">
-        <div class="col-md-5">
-          <div class="h-100 bg-light rounded p-2">
+        <div class="col-md-5 bg-myLitePink">
+          <div class="bg-light rounded p-2 my-3">
             <h4>Ingredients</h4>
             <!-- REVIEW @updateMe="handleEdit(payload)" -->
             <Ingredient
@@ -99,8 +99,8 @@
             </form>
           </div>
         </div>
-        <div class="col-md-5">
-          <div class="h-100 bg-light rounded p-2">
+        <div class="col-md-5 bg-myLitePink">
+          <div class="bg-light rounded p-2 my-3">
             <h4>Steps</h4>
             <Step
               class=""
