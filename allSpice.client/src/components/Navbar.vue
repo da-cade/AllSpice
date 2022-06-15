@@ -55,6 +55,7 @@ export default {
   border-radius: 5px;
   right: 0.25rem;
   top: 0.5rem;
+  z-index: 1000;
 }
 
 a {
@@ -67,8 +68,14 @@ a:hover {
 svg {
   font-size: 20pt;
 }
+i {
+  font-size: 16pt;
+}
 .formSize {
   height: 30vh;
   width: 55vh;
+}
+.dropdown-menu {
+  z-index: 1001;
 }
 </style>
