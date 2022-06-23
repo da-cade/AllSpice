@@ -9,12 +9,8 @@ class StepsService {
   }
   async makeEdits() {
     const updates = AppState.stepEdits
-    await updates.forEach(async u => {
-      const res = await api.put(`api/steps/${u.id}`, u)
-      console.log(res.data)
-      const index = AppState.steps.findIndex(i => i.id == u.id)
-      AppState.steps.splice(index, 1, res.data)
-    })
+    const res = await api.put("api/steps", updates)
+    console.log(res.data)
     AppState.stepEdits = []
     AppState.steps = AppState.steps
   }

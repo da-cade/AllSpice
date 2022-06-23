@@ -29,21 +29,26 @@ namespace allSpice.Services
       Step newStep = _repo.Create(stepData);
       return newStep;
     }
-    internal Step Edit(Step update, string userId)
+
+    internal List<Step> EditMany(List<Step> edits, string userId)
     {
-      Step original = GetStep(update.Id);
-      if (original == null)
+      foreach (Step edit in edits)
       {
-        throw new Exception("We couldn't find that Step in our database.");
+        Step original = GetStep(edit.Id);
+        if (original == null)
+        {
+          throw new Exception("We couldn't find that Step in our database.");
+        }
+        if (original.CreatorId != userId)
+        {
+          throw new Exception("You are not authorized to edit this.");
+        }
+        original.Body = edit.Body ?? original.Body;
+        original.Position = edit.Position;
       }
-      if (original.CreatorId != userId)
-      {
-        throw new Exception("You are not authorized to edit this.");
-      }
-      original.Body = update.Body ?? original.Body;
-      original.Position = update.Position;
-      return _repo.Edit(original);
+      return _repo.Edit(edits);
     }
+
     internal void Delete(int id, string userId)
     {
       Step found = GetStep(id);

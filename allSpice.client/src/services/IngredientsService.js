@@ -8,12 +8,8 @@ class IngredientsService {
   }
   async makeEdits() {
     const updates = AppState.ingEdits
-    await updates.forEach(async u => {
-      const res = await api.put(`api/ingredients/${u.id}`, u)
-      console.log(res.data)
-      const index = AppState.ingredients.findIndex(i => i.id == u.id)
-      AppState.ingredients.splice(index, 1, res.data)
-    })
+    const res = await api.put("api/ingredients", updates)
+    console.log(res.data)
     AppState.ingEdits = []
     AppState.ingredients = AppState.ingredients
   }

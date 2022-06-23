@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using allSpice.Models;
 using allSpice.Services;
@@ -50,21 +51,36 @@ namespace allSpice.Controllers
       }
     }
 
-    [HttpPut("{id}")]
-    [Authorize]
-    public async Task<ActionResult<Step>> Edit([FromBody] Step stepData)
+    [HttpPut]
+    public async Task<ActionResult<List<Step>>> EditMany([FromBody] List<Step> edits)
     {
       try
       {
         Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
-        Step update = _ss.Edit(stepData, userInfo.Id);
-        return Ok(update);
+        List<Step> updates = _ss.EditMany(edits, userInfo.Id);
+        return Ok(updates);
       }
       catch (Exception e)
       {
         return BadRequest(e.Message);
       }
     }
+
+    // [HttpPut("{id}")]
+    // [Authorize]
+    // public async Task<ActionResult<Step>> Edit([FromBody] Step stepData)
+    // {
+    //   try
+    //   {
+    //     Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
+    //     Step update = _ss.Edit(stepData, userInfo.Id);
+    //     return Ok(update);
+    //   }
+    //   catch (Exception e)
+    //   {
+    //     return BadRequest(e.Message);
+    //   }
+    // }
 
 
     [HttpDelete("{id}")]

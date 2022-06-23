@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using allSpice.Models;
 using allSpice.Services;
@@ -51,15 +52,15 @@ namespace allSpice.Controllers
       }
     }
 
-    [HttpPut("{id}")]
+    [HttpPut]
     [Authorize]
-    public async Task<ActionResult<Ingredient>> Edit([FromBody] Ingredient ingyData)
+    public async Task<ActionResult<List<Ingredient>>> Edit([FromBody] List<Ingredient> ingyData)
     {
       try
       {
         Account userInfo = await HttpContext.GetUserInfoAsync<Account>();
-        Ingredient update = _igs.Edit(ingyData, userInfo.Id);
-        return Ok(update);
+        List<Ingredient> updates = _igs.Edit(ingyData, userInfo.Id);
+        return Ok(updates);
       }
       catch (Exception e)
       {

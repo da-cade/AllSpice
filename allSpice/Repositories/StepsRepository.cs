@@ -43,7 +43,7 @@ namespace allSpice.Repositories
       stepData.Id = _db.ExecuteScalar<int>(sql, stepData);
       return stepData;
     }
-    internal Step Edit(Step original)
+    internal List<Step> Edit(List<Step> edits)
     {
       string sql = @"
       UPDATE steps
@@ -52,8 +52,8 @@ namespace allSpice.Repositories
         position = @position
       WHERE id = @Id
       ";
-      _db.Execute(sql, original);
-      return original;
+      _db.Execute(sql, edits);
+      return edits;
     }
     internal void Delete(int id)
     {

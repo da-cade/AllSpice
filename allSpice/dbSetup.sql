@@ -35,6 +35,8 @@ CREATE TABLE IF NOT EXISTS ingredients(
     ON DELETE CASCADE
 )default charset utf8;
 
+
+
 CREATE TABLE IF NOT EXISTS steps(
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
   position INT,
@@ -48,6 +50,13 @@ CREATE TABLE IF NOT EXISTS steps(
     REFERENCES recipes(id)
     ON DELETE CASCADE
 )default charset utf8;
+
+-- CREATE PROCEDURE ttstepsTable
+--   (position INT, body VARCHAR(255))
+-- AS
+--   BEGIN
+--   INSERT INTO #s
+  
 
 CREATE TABLE IF NOT EXISTS favorites(
   id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,

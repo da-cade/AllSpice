@@ -44,7 +44,7 @@ namespace allSpice.Repositories
       ingData.Id = _db.ExecuteScalar<int>(sql, ingData);
       return ingData;
     }
-    internal Ingredient Edit(Ingredient original)
+    internal List<Ingredient> Edit(List<Ingredient> edits)
     {
       string sql = @"
       UPDATE ingredients
@@ -53,8 +53,8 @@ namespace allSpice.Repositories
         quantity = @quantity
       WHERE id = @Id
       ";
-      _db.Execute(sql, original);
-      return original;
+      _db.Execute(sql, edits);
+      return edits;
     }
 
     internal void Delete(int id)

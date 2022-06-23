@@ -36,20 +36,23 @@ namespace allSpice.Services
       Ingredient newIng = _repo.Create(ingyData);
       return newIng;
     }
-    internal Ingredient Edit(Ingredient update, string userId)
+    internal List<Ingredient> Edit(List<Ingredient> edits, string userId)
     {
-      Ingredient original = GetIngredient(update.Id);
-      if (original == null)
+      foreach (Ingredient edit in edits)
       {
-        throw new Exception("We couldn't find that Ingredient in our database.");
+        Ingredient original = GetIngredient(edit.Id);
+        if (original == null)
+        {
+          throw new Exception("We couldn't find that Ingredient in our database.");
+        }
+        if (original.CreatorId != userId)
+        {
+          throw new Exception("You are not authorized to edit this.");
+        }
+        original.Name = edit.Name ?? original.Name;
+        original.Quantity = edit.Quantity ?? original.Quantity;
       }
-      if (original.CreatorId != userId)
-      {
-        throw new Exception("You are not authorized to edit this.");
-      }
-      original.Name = update.Name ?? original.Name;
-      original.Quantity = update.Quantity ?? original.Quantity;
-      return _repo.Edit(original);
+      return _repo.Edit(edits);
     }
 
     internal void Delete(int id, string userId)
